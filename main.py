@@ -34,6 +34,14 @@ def main():
         if not args.output.lower().endswith('.csv'):
             raise ValueError("Output file must be a CSV file.")
 
+        # Compile the pattern before the CSV is loaded. pandas would surface
+        # a bad pattern later anyway, but only after reading the whole file,
+        # and the message would point at the data instead of the pattern.
+        try:
+            re.compile(args.pattern)
+        except re.error as e:
+            raise re.error(str(e)) from e
+
         df = pd.read_csv(args.file)
 
         # Input validation: Check if the specified column exists
@@ -44,7 +52,12 @@ def main():
         logging.info(f"Column to check: {args.column}")
         logging.info(f"Regex pattern: {args.pattern}")
 
-        # Create a mask to identify rows containing the sensitive pattern
+        # Create a mask to identify rows containing the sensitive pattern.
+        # astype(str) is deliberate: numeric columns would otherwise be
+        # skipped or error in str.contains. Its cost is that a missing value
+        # becomes the literal text "nan", so a pattern matching "nan" can
+        # suppress rows whose cell was empty. na=False keeps genuinely
+        # unmatched missing values in the kept set.
         mask = df[args.column].astype(str).str.contains(args.pattern, regex=True, na=False)
 
         # Get the number of records suppressed
