@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # dat-Record-Suppression
 Removes entire records from a dataset if they contain sensitive information identified by a pattern (e.g., SSN regex). Takes pattern and column name as arguments. Uses regex module. - Focused on A collection of utilities for anonymizing sensitive data in datasets. Includes tools for replacing real names, addresses, phone numbers, and other PII with fake but realistic values, while preserving data structure and relationships. Supports various data formats like CSV and JSON.
 
