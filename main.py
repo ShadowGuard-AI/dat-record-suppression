@@ -58,6 +58,12 @@ def main():
         # becomes the literal text "nan", so a pattern matching "nan" can
         # suppress rows whose cell was empty. na=False keeps genuinely
         # unmatched missing values in the kept set.
+        # contains is a search, not a full cell match: the pattern
+        # only has to appear somewhere in the value for the whole
+        # record to be suppressed. A caller who wants whole value
+        # matching has to anchor the pattern themselves, and a short
+        # pattern will suppress far more rows than its author may
+        # expect from reading the flag help alone.
         mask = df[args.column].astype(str).str.contains(args.pattern, regex=True, na=False)
 
         # Get the number of records suppressed
