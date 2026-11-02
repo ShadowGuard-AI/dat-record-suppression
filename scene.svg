@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  <rect width="1200" height="300" fill="#1a1828"/>
+  <polygon points="0,210 200,150 420,195 640,140 860,190 1080,150 1200,180 1200,300 0,300" fill="#12101a"/>
+  <g>
+    <polygon points="176,150 186,96 214,96 224,150" fill="#60584e"/>
+    <ellipse cx="200" cy="82" rx="11" ry="17" fill="#ffa642">
+      <animate attributeName="ry" values="15;19;15" dur="2.6s" repeatCount="indefinite"/>
+    </ellipse>
+    <polygon points="616,140 626,86 654,86 664,140" fill="#60584e"/>
+    <ellipse cx="640" cy="72" rx="11" ry="17" fill="#ffa642">
+      <animate attributeName="ry" values="15;19;15" dur="3.1s" repeatCount="indefinite"/>
+    </ellipse>
+    <polygon points="1056,150 1066,96 1094,96 1104,150" fill="#60584e"/>
+    <rect x="1070" y="66" width="20" height="16" fill="#28241f"/>
+  </g>
+</svg>
